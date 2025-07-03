@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "docusign-esign": "^8.2.0"
+    "docusign-esign": "^8.2.0",
+    "dotenv": "^17.0.1",
+    "express": "^5.1.0"
   }
 }
