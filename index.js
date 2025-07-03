@@ -61,7 +61,7 @@ app.post('/send-offer', async (req, res) => {
 
   let privateKey;
   try {
-    privateKey = fs.readFileSync(PRIVATE_KEY, 'utf8');
+    privateKey = fs.readFileSync(process.env.PRIVATE_KEY, 'utf8');
   } catch (err) {
     console.error('❌ Failed to read private key file:', err);
     process.exit(1);
