@@ -59,13 +59,12 @@ app.post('/send-offer', async (req, res) => {
   });
   console.log('🔐 Attempting to read private key from:', PRIVATE_KEY);
 
-  let privateKey;
-  try {
-    privateKey = fs.readFileSync(process.env.PRIVATE_KEY, 'utf8');
-  } catch (err) {
-    console.error('❌ Failed to read private key file:', err);
-    process.exit(1);
-  }
+  const privateKey = process.env.PRIVATE_KEY;
+
+if (!privateKey || !privateKey.includes('BEGIN PRIVATE KEY')) {
+  console.error('❌ PRIVATE_KEY is missing or malformed in environment variables');
+  process.exit(1);
+}
 
   try {
     const apiClient = new docusign.ApiClient();
